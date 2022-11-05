@@ -12,7 +12,7 @@ const tweets = []
 app.post("/sign-up", (req, res)=>{
     const user = req.body
 
-    if(user.username !== undefined && user.avatar !== undefined){
+    if(user.username !== '' && user.avatar !== ''){
         users.push(user)
         res.status(201).send("OK")
         return
@@ -25,7 +25,7 @@ app.post("/tweets", (req, res)=>{
     const {tweet} = req.body
     const {user} = req.headers 
 
-    if(tweet !== undefined && user !== undefined){
+    if(tweet !== '' && user !== undefined){
 
         const userInfo =users.find(u => u.username == user)
         if(userInfo === undefined){
